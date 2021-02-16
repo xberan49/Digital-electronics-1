@@ -8,6 +8,17 @@ https://github.com/xberan49/Digital-electronics-1
 2.    fnand_o <= not(not((not b_i) and a_i) and not((not c_i) and (not b_i)));
 3.    fnor_o <= not(b_i or (not a_i)) or not(c_i or b_i);
 
+| *c* | *b* |**a** | *f(c,b,a)* |
+| :-: | :-: | :-: | :-: |
+| 0 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 0 |
+| 0 | 1 | 1 | 0 |
+| 1 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 1 |
+| 1 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 0 |
+
 ### Screenshot with simulated time waveforms ###
 ![Screenshot with simulated time waveforms](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/01-gates/images/De_Morgans.png)
 
