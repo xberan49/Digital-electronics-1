@@ -1,42 +1,23 @@
-https://github.com/xberan49/Digital-electronics-1
-
-## Verification of De Morgan's laws ##
-
-### Listing of VHDL code ###
-
-1.    f_o  <= ((not b_i) and a_i) or ((not c_i) and (not b_i));
-2.    fnand_o <= not(not((not b_i) and a_i) and not((not c_i) and (not b_i)));
-3.    fnor_o <= not(b_i or (not a_i)) or not(c_i or b_i);
-
-| *c* | *b* |**a** | *f(c,b,a)* |
-| :-: | :-: | :-: | :-: |
-| 0 | 0 | 0 | 1 |
-| 0 | 0 | 1 | 1 |
-| 0 | 1 | 0 | 0 |
-| 0 | 1 | 1 | 0 |
-| 1 | 0 | 0 | 0 |
-| 1 | 0 | 1 | 1 |
-| 1 | 1 | 0 | 0 |
-| 1 | 1 | 1 | 0 |
-
-### Screenshot with simulated time waveforms ###
-![Screenshot with simulated time waveforms](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/01-gates/images/De_Morgans.png)
-
-[EDA Playground example](https://www.edaplayground.com/x/8KYY)
+## Preparation tasks
 
 
+| **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
+| :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0 0 | 0 0 | 0 | 1 | 0 |
+| 1 | 0 0 | 0 1 | 0 | 0 | 1 |
+| 2 | 0 0 | 1 0 | 0 | 0 | 1 |
+| 3 | 0 0 | 1 1 | 0 | 0 | 1 |
+| 4 | 0 1 | 0 0 |  |  |  |
+| 5 | 0 1 | 0 1 |  |  |  |
+| 6 |  |  |  |  |  |
+| 7 |  |  |  |  |  |
+| 8 |  |  |  |  |  |
+| 9 |  |  |  |  |  |
+| 10 |  |  |  |  |  |
+| 11 |  |  |  |  |  |
+| 12 |  |  |  |  |  |
+| 13 |  |  |  |  |  |
+| 14 | 1 1 | 1 0 |  |  |  |
+| 15 | 1 1 | 1 1 |  |  |  |
 
-## Verification of Distributive laws ##
-
-### Listing of VHDL code ###
-
-1. f1_o <= (x_i and y_i) or (x_i and z_i);
-2. f2_o <= x_i and (y_i or z_i);
-3. f3_o <= (x_i or y_i) and (x_i or z_i);
-4. f4_o <= x_i or (y_i and z_i);
-
-### Screenshot with simulated time waveforms ###
-![Screenshot with simulated time waveforms](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/01-gates/images/Distributive.png)
-
-[EDA Playground example](https://www.edaplayground.com/x/FLfZ)
-
+## Karnaugh maps for all three functions
