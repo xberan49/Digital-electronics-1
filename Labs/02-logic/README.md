@@ -21,3 +21,14 @@
 
 
 ## Karnaugh maps for all three functions
+
+### Karnaugh map for function B=A
+![Karnaugh map for function B=A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%3DA.PNG)
+
+
+### Karnaugh map for function B>A
+![Karnaugh map for function B>A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%20is%20greater%20than%20A.PNG)
+
+
+### Karnaugh map for function B<A
+![Karnaugh map for function B<A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%20is%20less%20than%20A.PNG)
