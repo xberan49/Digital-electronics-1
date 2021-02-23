@@ -32,3 +32,11 @@
 
 ### Karnaugh map for function B<A
 ![Karnaugh map for function B<A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%20is%20less%20than%20A.PNG)
+
+## Equations of simplified SoP form of the "greater than" function
+![Equations of simplified SoP form of the "greater than" function](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/simplified%20SoP%20form%20of%20the%20greather%20than%20than%20function.PNG)
+
+## Equations of simplified PoS form of the "less than" function
+![Equations of simplified PoS form of the "less than" function](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/simplified%20PoS%20form%20of%20the%20less%20than%20function.PNG)
+
+https://www.edaplayground.com/x/uSEP
