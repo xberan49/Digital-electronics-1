@@ -49,8 +49,6 @@ p_stimulus : **process
 ### Screenshot with simulated time waveforms
 ![Simulated time waveforms](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/multiplexer-images/V%C3%BDst%C5%99i%C5%BEek.PNG)
 
-## Equations of simplified SoP form of the "greater than" function
-![Equations of simplified SoP form of the "greater than" function](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/simplified%20SoP%20form%20of%20the%20greather%20than%20than%20function.PNG)
 
 ## 3. Vivado tutorial
 ![1.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/1..PNG)
