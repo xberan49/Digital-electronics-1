@@ -1,44 +1,68 @@
 https://github.com/xberan49/Digital-electronics-1
 
-## Preparation tasks
-
-| **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
-| :-: | :-: | :-: | :-: | :-: | :-: |
-| 0 | 0 0 | 0 0 | 0 | 1 | 0 |
-| 1 | 0 0 | 0 1 | 0 | 0 | 1 |
-| 2 | 0 0 | 1 0 | 0 | 0 | 1 |
-| 3 | 0 0 | 1 1 | 0 | 0 | 1 |
-| 4 | 0 1 | 0 0 | 1 | 0 | 0 |
-| 5 | 0 1 | 0 1 | 0 | 1 | 0 |
-| 6 | 0 1 | 1 0 | 0 | 0 | 1 |
-| 7 | 0 1 | 1 1 | 0 | 0 | 1 |
-| 8 | 1 0 | 0 0 | 1 | 0 | 0 |
-| 9 | 1 0 | 0 1 | 1 | 0 | 0 |
-| 10 | 1 0 | 1 0 | 0 | 1 | 0 |
-| 11 | 1 0 | 1 1 | 0 | 0 | 1 |
-| 12 | 1 1 | 0 0 | 1 | 0 | 0 |
-| 13 | 1 1 | 0 1 | 1 | 0 | 0 |
-| 14 | 1 1 | 1 0 | 1 | 0 | 0 |
-| 15 | 1 1 | 1 1 | 0 | 1 | 0 |
+## 1. Preparation tasks
 
 
-## Karnaugh maps for all three functions
+## 2. Two-bit wide 4-to-1 multiplexer
 
-### Karnaugh map for function B=A
-![Karnaugh map for function B=A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%3DA.PNG)
+### Listing of VHDL architecture from source file
+
+**architecture** Behavioral of mux_2bit_4to1 **is
+begin**
+    f_o <= a_i **when** (sel_i = "00") **else**
+           b_i **when** (sel_i = "01") **else**
+           c_i **when** (sel_i = "10") **else**
+           d_i;       
+
+**end architecture** Behavioral;
 
 
-### Karnaugh map for function B>A
-![Karnaugh map for function B>A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%20is%20greater%20than%20A.PNG)
+### Listing of VHDL stimulus process from testbench file
 
+p_stimulus : **process
+    begin**
+        -- Report a note at the beginning of stimulus process
+        **report** "Stimulus process started" **severity** note;
+.
+        s_d <= "00"; s_c <= "00"; s_b <= "00"; s_a <= "00"; 
+        s_sel <= "00"; **wait for** 100 ns;
+.
+        s_d <= "10"; s_c <= "01"; s_b <= "01"; s_a <= "00"; 
+        s_sel <= "00"; **wait for** 100 ns;
+.
+        s_d <= "10"; s_c <= "01"; s_b <= "01"; s_a <= "11"; 
+        s_sel <= "00"; **wait for** 100 ns;
+.
+        s_d <= "10"; s_c <= "01"; s_b <= "01"; s_a <= "00"; 
+        s_sel <= "01"; **wait for** 100 ns;
+.
+        s_d <= "10"; s_c <= "01"; s_b <= "11"; s_a <= "00"; 
+        s_sel <= "01"; **wait for** 100 ns;
+        -- WRITE OTHER TEST CASES HERE
+.
+.
+        -- Report a note at the end of stimulus process
+        **report** "Stimulus process finished" **severity** note;
+        **wait**;
+    **end process** p_stimulus;
 
-### Karnaugh map for function B<A
-![Karnaugh map for function B<A](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/K%20map%20B%20is%20less%20than%20A.PNG)
+### Screenshot with simulated time waveforms
+![Simulated time waveforms](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/multiplexer-images/V%C3%BDst%C5%99i%C5%BEek.PNG)
 
 ## Equations of simplified SoP form of the "greater than" function
 ![Equations of simplified SoP form of the "greater than" function](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/simplified%20SoP%20form%20of%20the%20greather%20than%20than%20function.PNG)
 
-## Equations of simplified PoS form of the "less than" function
-![Equations of simplified PoS form of the "less than" function](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/02-logic/images/simplified%20PoS%20form%20of%20the%20less%20than%20function.PNG)
+## 3. Vivado tutorial
+![1.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/1..PNG)
+![2.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/2..PNG)
+![3.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/3..PNG)
+![4.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/4..PNG)
+![5.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/5..PNG)
+![6.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/6..PNG)
+![7.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/7..PNG)
+![8.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/8..PNG)
+![9.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/9..PNG)
+![10.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/10..PNG)
+![11.](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/03-vivaldo/Vivaldo_manual/11..PNG)
 
-https://www.edaplayground.com/x/uSEP
+
