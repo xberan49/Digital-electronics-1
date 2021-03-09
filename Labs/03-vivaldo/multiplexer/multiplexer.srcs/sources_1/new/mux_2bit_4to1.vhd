@@ -38,6 +38,4 @@ begin
            c_i when (sel_i = "10") else
            d_i;       
 
-    -- WRITE "GREATER" AND "EQUALS" ASSIGNMENTS HERE
-
 end architecture Behavioral;
