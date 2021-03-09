@@ -24,9 +24,9 @@
 ## 2. Seven-segment display decoder
 * Listing of VHDL architecture from source file `hex_7seg.vhd`
 - p_7seg_decoder : process(hex_i)
-- begin
-- case hex_i is
-- when "0000" =>
+- *begin*
+- *case* hex_i is
+- *when* "0000" =>
 - seg_o <= "0000001";     -- 0
 - when "0001" =>
 - seg_o <= "1001111";     -- 1
