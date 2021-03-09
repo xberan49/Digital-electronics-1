@@ -22,12 +22,12 @@
 | F | 1111 | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
 
 ## 2. Seven-segment display decoder
-1. * Listing of VHDL architecture from source file `hex_7seg.vhd`
-2.  p_7seg_decoder : process(hex_i)
-3.    begin
-4.        case hex_i is
-5.            when "0000" =>
-6.                seg_o <= "0000001";     -- 0
+* Listing of VHDL architecture from source file `hex_7seg.vhd`
+-  p_7seg_decoder : process(hex_i)
+-    begin
+-        case hex_i is
+-            when "0000" =>
+-                seg_o <= "0000001";     -- 0
 7.            when "0001" =>
 8.                seg_o <= "1001111";     -- 1
 9.            when "0010" =>
