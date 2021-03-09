@@ -61,7 +61,7 @@
 - **end case**;
 - **end process** p_7seg_decoder;
 
-### 2.2. * Listing of VHDL stimulus process from testbench file `tb_hex_7seg.vhd`
+### 2.2. Listing of VHDL stimulus process from testbench file `tb_hex_7seg.vhd`
 - s_hex <= "0000"; **wait for** 100 ns; 
 - s_hex <= "0001"; **wait for** 100 ns; 
 - s_hex <= "0010"; **wait for** 100 ns; 
@@ -78,3 +78,8 @@
 - s_hex <= "1101"; **wait for** 100 ns;
 - s_hex <= "1110"; **wait for** 100 ns;
 - s_hex <= "1111"; **wait for** 100 ns;
+
+### 2.3. Screenshot with simulated time waveforms
+[simulation](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/04-segment/images/display.PNG)
+
+
