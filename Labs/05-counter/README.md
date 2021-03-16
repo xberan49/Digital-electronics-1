@@ -2,82 +2,97 @@
 
 ## 1. Preparation tasks
 
-| **Hex** | **Inputs** | **A** | **B** | **C** | **D** | **E** | **F** | **G** |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| 0 | 0000 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
-| 1 | 0001 | 1 | 0 | 0 | 1 | 1 | 1 | 1 |
-| 2 | 0011 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
-| 3 | 0010 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
-| 4 | 0101 | 1 | 0 | 0 | 1 | 1 | 0 | 0 |
-| 5 | 0100 | 0 | 1 | 0 | 0 | 1 | 0 | 0 |
-| 6 | 0111 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
-| 7 | 0110 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
-| 8 | 1000 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 9 | 1001 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
-| A | 1010 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
-| b | 1011 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
-| C | 1100 | 0 | 1 | 1 | 0 | 0 | 0 | 1 |
-| d | 1101 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
-| E | 1110 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
-| F | 1111 | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
+| **Time interval** | **Number of clk periods** | **Number of clk periods in hex** | **Number of clk periods in binary** |
+   | :-: | :-: | :-: | :-: |
+   | 2&nbsp;ms | 200 000 | `x"3_0d40"` | `b"0011_0000_1101_0100_0000"` |
+   | 4&nbsp;ms | 400 000 | `x"61A80"` | `b"0110_0001_1010_1000_0000"` |
+   | 10&nbsp;ms | 1 000 000 | `x"F4240"` | `b"1111_0100_0010_0100_0000"` |
+   | 250&nbsp;ms | 25 000 000 |`x"17D7840"` | `b"0001_0111_1101_0111_1000_0100_0000"` |
+   | 500&nbsp;ms | 50 000 000 |`x"2FAF080"` | `b"0010_1111_1010_1111_0000_1000_0000"` | 
+   | 1&nbsp;sec | 100 000 000 | `x"5F5_E100"` | `b"0101_1111_0101_1110_0001_0000_0000"` |
 
-## 2. Seven-segment display decoder
-### 2.1. Listing of VHDL architecture from source file `hex_7seg.vhd`
-- p_7seg_decoder : process(hex_i)
-- **begin**
-- **case** hex_i is
-- **when** "0000" =>
-- seg_o <= "0000001";     -- 0
-- **when** "0001" =>
-- seg_o <= "1001111";     -- 1
-- **when** "0010" =>
-- seg_o <= "0010010";     -- 2
-- **when** "0011" =>
-- seg_o <= "0000110";     -- 3
-- **when** "0100" =>
-- seg_o <= "1001100";     -- 4
-- **when** "0101" =>
-- seg_o <= "0100100";     -- 5
-- **when** "0110" =>
-- **seg_o** <= "0100000";     -- 6
-- **when** "0111" =>
-- seg_o <= "0001111";     -- 7
-- **whe**n "1000" =>
-- seg_o <= "0000000";     -- 8
-- **when** "1001" =>
-- seg_o <= "0000100";     -- 9
-- **when** "1010" =>
-- seg_o <= "0001000";     -- A
-- **when** "1011" =>
-- seg_o <= "1100000";     -- b
-- **when** "1100" =>
-- seg_o <= "0110001";     -- C
-- **when** "1101" =>
-- seg_o <= "1000010";     -- d
-- **when** "1110" =>
-- seg_o <= "0110000";     -- E
-- **when others** =>
-- seg_o <= "0111000";     -- F
-- **end case**;
-- **end process** p_7seg_decoder;
+## 2. Bidirectional counter
+### 2.1. Listing of VHDL code of the process p_cnt_up_down with syntax highlighting
+```VHDL
+------------------------------------------------------------------------
+--
+-- N-bit Up/Down binary counter.
+-- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
+--
+-- Copyright (c) 2019-Present Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+------------------------------------------------------------------------
+-- Entity declaration for n-bit counter
+------------------------------------------------------------------------
+entity cnt_up_down is
+    generic(
+        g_CNT_WIDTH : natural := 4      -- Number of bits for counter
+    );
+    port(
+        clk      : in  std_logic;       -- Main clock
+        reset    : in  std_logic;       -- Synchronous reset
+        en_i     : in  std_logic;       -- Enable input
+        cnt_up_i : in  std_logic;       -- Direction of the counter
+        cnt_o    : out std_logic_vector(g_CNT_WIDTH - 1 downto 0)
+    );
+end entity cnt_up_down;
+
+------------------------------------------------------------------------
+-- Architecture body for n-bit counter
+------------------------------------------------------------------------
+architecture behavioral of cnt_up_down is
+
+    -- Local counter
+    signal s_cnt_local : unsigned(g_CNT_WIDTH - 1 downto 0);
+
+begin
+    --------------------------------------------------------------------
+    -- p_cnt_up_down:
+    -- Clocked process with synchronous reset which implements n-bit 
+    -- up/down counter.
+    --------------------------------------------------------------------
+    p_cnt_up_down : process(clk)
+    begin
+        if rising_edge(clk) then
+        
+            if (reset = '1') then               -- Synchronous reset
+                s_cnt_local <= (others => '0'); -- Clear all bits
+
+            elsif (en_i = '1') then       -- Test if counter is enabled
+
+
+                -- TEST COUNTER DIRECTION HERE
+            if (cnt_up_i = '1') then
+                s_cnt_local <= s_cnt_local + 1;
+
+            else
+                s_cnt_local <= s_cnt_local - 1;
+
+             end if;
+                
+
+
+            end if;
+        end if;
+    end process p_cnt_up_down;
+
+    -- Output must be retyped from "unsigned" to "std_logic_vector"
+    cnt_o <= std_logic_vector(s_cnt_local);
+
+end architecture behavioral;
+```
+
 
 ### 2.2. Listing of VHDL stimulus process from testbench file `tb_hex_7seg.vhd`
-- s_hex <= "0000"; **wait for** 100 ns; 
-- s_hex <= "0001"; **wait for** 100 ns; 
-- s_hex <= "0010"; **wait for** 100 ns; 
-- s_hex <= "0011"; **wait for** 100 ns;
-- s_hex <= "0100"; **wait for** 100 ns;
-- s_hex <= "0101"; **wait for** 100 ns;
-- s_hex <= "0110"; **wait for** 100 ns;
-- s_hex <= "0111"; **wait for** 100 ns;
-- s_hex <= "1000"; **wait for** 100 ns;
-- s_hex <= "1001"; **wait for** 100 ns;
-- s_hex <= "1010"; **wait for** 100 ns;
-- s_hex <= "1011"; **wait for** 100 ns;
-- s_hex <= "1100"; **wait for** 100 ns;
-- s_hex <= "1101"; **wait for** 100 ns;
-- s_hex <= "1110"; **wait for** 100 ns;
-- s_hex <= "1111"; **wait for** 100 ns;
+
 
 ### 2.3. Screenshot with simulated time waveforms
 ![simulation](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/04-segment/images/display.PNG)
