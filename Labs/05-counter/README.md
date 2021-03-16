@@ -2,6 +2,14 @@
 
 ## 1. Preparation tasks
 
+|**PIN**|**PORT**|
+| :-: | :-: |
+| N17 | BTNC |
+| M18 | BTNU |
+| P17 | BTNL |
+| M17 | BTNR |
+| P18 | BTND |
+
 | **Time interval** | **Number of clk periods** | **Number of clk periods in hex** | **Number of clk periods in binary** |
    | :-: | :-: | :-: | :-: |
    | 2&nbsp;ms | 200 000 | `x"3_0d40"` | `b"0011_0000_1101_0100_0000"` |
