@@ -3,8 +3,6 @@
 ## 1. Preparation tasks
 ![wavedrom](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/06-display_driver/images/wavedrom.png)
 
-https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/06-display_driver/images/wavedrom.png
-
 ## 2. Display driver
 ### 2.1. Listing of VHDL code of the process p_mux with syntax highlighting
 ```VHDL
