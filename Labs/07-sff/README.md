@@ -435,3 +435,5 @@ end Behavioral;
 
 #### 3.3.2. jk_ff_rst
 ![simulation](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/07-sff/images/jk_ff_rst.PNG)
+
+https://github.com/xberan49/Digital-electronics-1
