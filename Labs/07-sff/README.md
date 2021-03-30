@@ -427,7 +427,7 @@ end Behavioral;
         report "Stimulus process finished" severity note;
         wait;
     end process p_stimulus;
-    ```
+```
     
 ### 3.3.Screenshots with simulated time waveforms
 #### 3.3.1. d_ff_arst
