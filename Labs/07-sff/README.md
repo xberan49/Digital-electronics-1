@@ -168,7 +168,7 @@ end Behavioral;
     
 ```
 ### 2.3. Screenshot with simulated time waveforms
-![simulation]()
+![simulation](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/07-sff/images/D_latch.PNG)
 
 ## 3.Flip-flops
 ### 3.1. VHDL code listing 
@@ -431,7 +431,7 @@ end Behavioral;
     
 ### 3.3.Screenshots with simulated time waveforms
 #### 3.3.1. d_ff_arst
-![simulation]()
+![simulation](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/07-sff/images/d_ff_asrt.PNG)
 
 #### 3.3.2. jk_ff_rst
-![simulation]()
+![simulation](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/07-sff/images/jk_ff_rst.PNG)
