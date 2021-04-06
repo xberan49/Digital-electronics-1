@@ -135,10 +135,10 @@
 
 ## 3. Smart controller
 
-| **car position**| **Current state** | **Direction South** | **Direction West** |
-| :-- | :-- | :-: | :-: | :-: |
-|EAST| `WEST_GO` | red | green |
-|NORTH| `SOUTH_GO` | red | green | 
+| **car position** | **Current state** | **Direction South** | **Direction West** |
+| :-: | :-: | :-: | :-: |
+| EAST | `WEST_GO` | red | green |
+| NORTH | `SOUTH_GO` | red | green | 
 | BOTH/NONE | `process(s_state)` |  |  |
 
 ``` VHDL
