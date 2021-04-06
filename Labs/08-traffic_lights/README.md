@@ -133,5 +133,90 @@
 ![simulation_2](https://github.com/xberan49/Digital-electronics-1/blob/main/Labs/08-traffic_lights/imagess/simulation_2.PNG)
 
 
+## 3. Smart controller
 
+| **car position**| **Current state** | **Direction South** | **Direction West** |
+| :-- | :-- | :-: | :-: | :-: |
+|EAST| `WEST_GO` | red | green |
+|NORTH| `SOUTH_GO` | red | green | 
+| BOTH/NONE | `process(s_state)` |  |  |
+
+``` VHDL
+ p_smart_traffic_fsm : process(clk)
+    begin
+        if rising_edge(clk) then
+            if (reset = '1') then       -- Synchronous reset
+                s_state <= STOP1 ;      -- Set initial state
+                s_cnt   <= c_ZERO;      -- Clear all bits
+
+            elsif (s_en = '1') then
+                if (s_car_e = '1' and s_car_n = '0') then
+                south_o <= c_RED;
+                west_o  <= c_GREEN;
+                
+             else 
+                case s_state is
+
+                    when STOP1 =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= WEST_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+
+                    when WEST_GO =>
+                        if (s_cnt < c_DELAY_4SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            s_state <= WEST_WAIT;
+                            s_cnt   <= c_ZERO;
+                        end if;
+
+                    when WEST_WAIT =>
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            s_state <= STOP2;
+                            s_cnt   <= c_ZERO;
+                        end if;                        
+
+                    when STOP2 =>
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            s_state <= SOUTH_GO;
+                            s_cnt   <= c_ZERO;
+                        end if;
+                        
+                    when SOUTH_GO =>
+                        if (s_cnt < c_DELAY_4SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            s_state <= SOUTH_WAIT;
+                            s_cnt   <= c_ZERO;
+                        end if; 
+                        
+                    when SOUTH_WAIT =>
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            s_state <= STOP1;
+                            s_cnt   <= c_ZERO;
+                        end if; 
+
+                    -- It is a good programming practice to use the 
+                    -- OTHERS clause, even if all CASE choices have 
+                    -- been made. 
+                    when others =>
+                        s_state <= STOP1;
+
+                end case;
+            end if; -- Synchronous reset
+        end if; -- Rising edge
+    end process p_smart_traffic_fsm;
+```
 
