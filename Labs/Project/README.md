@@ -391,19 +391,19 @@ end Behavioral;
  
  In the first picture we can see the whole simulation. The signals with shades of blue are for front side, with shades of light brown are for back side, red signals represent updating internal signals that change state , green s_tone signals represent sound output, green s_state signal is internal signal of URM driver decoder and on last 2 green signals we can see LED output. Signals s_sensor_in_o are sending 10us pulses to sensors and s_sensor_out_i are receiving returning signals. From a short look we can tell that it works properly. The second and third picture is zoomed image of the first picture. The 1st zoomed area is marked with first violet vertical line and the 2nd zoomed area is marked with second violet vertical line. Signals s_sensor2_out_i and s_sensor5_out_i in this highlighted area are 5000us long, signals s_sensor1_out_i and s_sensor4_out_i are 3000us long. We will take a look at the zoomed pictures.
  
- ![Images](images/PA1.png)
+ ![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/PA1.png)
  
  In the picture we can see ends of s_sensor1_out_i and s_sensor4_out_i signals which are 3000us long. After these signals change the state to 0, the update is triggered, every state changes to its right following position and the measured distance is saved to its proper value s_dist_lvl1 and s_dist_lvl4. With calculation we can check that 3000us long signal corresponds to 51cm which is above first treshold and this value is represented by `10` . After all that URM driver decoder sends 10us pulse into 2 following sensors and then waits for returning signal. At the end of this picture we can see returning signals (s_sensor2_out_i and s_sensor5_out_i)  and we will take a look on the ends of these signals in the next picture.
  
- ![Images](images/PA2.png)
+ ![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/PA2.png)
   
   In this picture it works the same like in simulation above but with s_sensor2_out_i and s_sensor5_out_i signals.The length of these signals are 5000us and it corresponds to 86cm which is again above first treshold and this value is represented by `10`. 
   
- ![Images](images/PA4.png)
+ ![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/PA4.png)
    
    This is close look on the update when it is triggered. And we can see that it works properly - it changes states to right positions.
    
- ![Images](images/PA3.png)
+ ![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/PA3.png)
 
 #### Submodules of parking assistant :
 
@@ -556,19 +556,19 @@ end Behavioral;
 
 The first picture is a look on the whole simulation which is 50ms long. Again from a short look we can see that it works properly. 
 
-![Images](images/URM1.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/URM1.png)
 
 In the zoomed picture we can find the ending of returning signal which is then added to s_dist_lvl_o. After that the update is triggered and the new cycle starts again.
 
-![Images](images/URM2.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/URM2.png)
 
 Here we can see the beginning of this simulation when the reset is on (it is in value of 1). When the reset is in value of 0 then the whole cycle starts ( Initial --> Pulse -->  Waiting --> Count --> Initial...).
 
-![Images](images/URMS.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/URMS.png)
 
 Here we can see the proper function of update. 
 
-![Images](images/URMU.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/URMU.png)
 
 
 #### 3.Beep generator 
@@ -678,7 +678,7 @@ This process describes changing frequency of the tone based on distance change. 
 
 When the distance changes period of beeping signal is changed. As displayed on simulation below
 
-![Images](images/B_G_Sim.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/B_G_Sim.png)
 
 #### 4. Distance comparator 
 
@@ -814,7 +814,7 @@ This entity compares measured distances, and returns the closest distance measur
   
   On the image below we can see that input values can be different but the entity always return one, that is greatest = s_goat.
   
-  ![Images](images/D_C_Sim.png)
+  ![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/D_C_Sim.png)
   
 #### 5. cnt_up_down 
 
@@ -909,7 +909,7 @@ One of the two entities that were made in school. It works the same but it was a
 
 On this simulation image we can see that it counts properly, when the enabling (s_en) signal is positive, from zero to number five, and then it resets itself. 
 
- ![Images](images/Cnt_Sim.png)
+ ![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/Cnt_Sim.png)
   
 #### 6. mux_2bit_6to1
 
@@ -962,7 +962,7 @@ end Behavioral;
   ```
 **C)Screenshot of simulation**
 
-![Images](images/Mux_Sim.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/Mux_Sim.png)
 
 ## TOP module description and simulations
 
@@ -1023,11 +1023,11 @@ TOP module is designed for connecting code signal to pins of `Arty-A7-100` but i
 
 These selecting signal sel_i are switching between individual bargraphs and signals LED_o determine which LEDs will be on.  We will connect output pins of our board to this logical function. 
 
-![Images](images/logical_circuit.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/logical_circuit.png)
 
 In this picture there is LED realization of bargraphs . We can connect it to our logical circuit and it will signalize the measured level
 
-![Images](images/DPS.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/DPS.png)
 
 
 ## Video
