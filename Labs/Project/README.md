@@ -27,7 +27,7 @@ The project is about parking assistant with 6 sensors (3 in front & 3 at the bac
 The description of hardware is pictured in the block diagram. 
 
 
-![Images](images/block_diagram.png)
+![Images](https://github.com/Zuzanaczm/Digital-electronics-1/blob/main/Labs/project/images/block_diagram.png)
 
 If you want to see original file of this diagram, you can find Project_PS.pdf file in this project folder...
 
